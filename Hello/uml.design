@@ -1,0 +1,128 @@
++------------------------------------------------------+
+|                   <<controller>>                     |
+|                DiscountController                    |
+|------------------------------------------------------|
+| - discountCalculatorService: DiscountCalculatorService |
+|------------------------------------------------------|
+| + calculateNetPayableAmount(bill: Bill): ResponseEntity<Double> |
++------------------------------------------------------+
+                          |
+                          | @Autowired
+                          |
+                          v
++------------------------------------------------------+
+|                   <<service>>                        |
+|           DiscountCalculatorServiceImpl              |
+|------------------------------------------------------|
+| + calculateNetPayableAmount(bill: Bill): double      |
++------------------------------------------------------+
+                          |
+                          | implements
+                          |
+                          v
++------------------------------------------------------+
+|                   <<interface>>                      |
+|           DiscountCalculatorService                  |
+|------------------------------------------------------|
+| + calculateNetPayableAmount(bill: Bill): double      |
++------------------------------------------------------+
+                          |
+                          | uses
+                          |
+                          v
++------------------------------------------------------+
+|                   <<utility>>                        |
+|                DiscountUtils                         |
+|------------------------------------------------------|
+| + calculateNetPayableAmount(bill: Bill): double      |
+| + calculateTotalAmount(products: List<Product>): double |
+| + calculateDiscountAmount(user: User, totalAmount: double): double |
+| + isLongTermCustomer(customerSince: LocalDate): boolean |
++------------------------------------------------------+
+
++------------------------------------------------------+
+|                    <<exception>>                     |
+|                RetailStoreException                  |
+|------------------------------------------------------|
+| + RetailStoreException(message: String)              |
+| + RetailStoreException(message: String, cause: Throwable) |
++------------------------------------------------------+
+
++------------------------------------------------------+
+|              <<exception handler>>                   |
+|           RetailStoreExceptionHandler                |
+|------------------------------------------------------|
+| + handleException(e: Exception): ResponseEntity<String> |
+| + handleRuntimeException(e: RuntimeException): ResponseEntity<String> |
++------------------------------------------------------+
+
++------------------------------------------------------+
+|                      <<model>>                       |
+|                      Bill                            |
+|------------------------------------------------------|
+| - id: Long                                           |
+| - user: User                                         |
+| - products: List<Product>                            |
+|------------------------------------------------------|
+| + getId(): Long                                      |
+| + setId(id: Long): void                              |
+| + getUser(): User                                    |
+| + setUser(user: User): void                          |
+| + getProducts(): List<Product>                       |
+| + setProducts(products: List<Product>): void         |
++------------------------------------------------------+
+
++------------------------------------------------------+
+|                      <<model>>                       |
+|                      User                            |
+|------------------------------------------------------|
+| - id: Long                                           |
+| - name: String                                       |
+| - userType: UserType                                 |
+| - customerSince: LocalDate                           |
+|------------------------------------------------------|
+| + getId(): Long                                      |
+| + setId(id: Long): void                              |
+| + getName(): String                                  |
+| + setName(name: String): void                        |
+| + getUserType(): UserType                            |
+| + setUserType(userType: UserType): void              |
+| + getCustomerSince(): LocalDate                      |
+| + setCustomerSince(customerSince: LocalDate): void   |
++------------------------------------------------------+
+
++------------------------------------------------------+
+|                      <<model>>                       |
+|                    Product                           |
+|------------------------------------------------------|
+| - id: Long                                           |
+| - name: String                                       |
+| - category: ProductCategory                          |
+| - price: double                                      |
+|------------------------------------------------------|
+| + getId(): Long                                      |
+| + setId(id: Long): void                              |
+| + getName(): String                                  |
+| + setName(name: String): void                        |
+| + getCategory(): ProductCategory                     |
+| + setCategory(category: ProductCategory): void       |
+| + getPrice(): double                                 |
+| + setPrice(price: double): void                      |
++------------------------------------------------------+
+
++------------------------------------------------------+
+|                   <<enumeration>>                    |
+|                ProductCategory                       |
+|------------------------------------------------------|
+| + GROCERIES                                          |
+| + OTHER                                              |
++------------------------------------------------------+
+
++------------------------------------------------------+
+|                   <<enumeration>>                    |
+|                   UserType                           |
+|------------------------------------------------------|
+| + EMPLOYEE                                           |
+| + AFFILIATE                                          |
+| + CUSTOMER                                           |
++------------------------------------------------------+
