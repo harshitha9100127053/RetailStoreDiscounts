@@ -82,7 +82,7 @@ Content-Type: application/json
       "id": 1,
       "name": "Laptop",
       "category": "OTHER",
-      "price": 1000.0
+      "price": 10000.0
     },
     {
       "id": 2,
@@ -93,13 +93,14 @@ Content-Type: application/json
   ]
 }
 
+
 ````
 
 # Example Response
 ````
 HTTP/1.1 200 OK
 Content-Type: application/json
-1620.0
+9720.0
 ````
 # Future Improvements
 Implement grocery check logic to differentiate groceries from other items.
