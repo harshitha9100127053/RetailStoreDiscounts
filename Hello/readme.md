@@ -107,6 +107,9 @@ Implement grocery check logic to differentiate groceries from other items.
 Enhance security and validation for input data.
 Extend functionality with more discount types or promotions.
 
+# Uml Design
+![image](https://github.com/user-attachments/assets/5f3f27bb-e89f-4f51-996d-ec8d93997910)
+
 
 ## Authors
 Harshitha
